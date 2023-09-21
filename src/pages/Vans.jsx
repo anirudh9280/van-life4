@@ -6,7 +6,6 @@ export default function Vans() {
         fetch("/api/vans").then(res => res.json()).then(data => setVans(data.vans))
         
     }, [])
-    console.log(vans)
     const vanElements = vans.map(van => {
         return (<div key={van.id} className="van-tile">
             <img src={van.imageUrl} />
