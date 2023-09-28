@@ -6,28 +6,31 @@ import "./server.js"
 import Vans from "./pages/Vans"
 import VanDetail from './pages/VanDetail'
 import Layout from "./components/Layout.jsx"
-import Dashboard from "./pages/Host/Dashboard"
+import Dashboard from "./pages/Host/Dashboard.jsx"
 import Income from "./pages/Host/Income.jsx"
 import Reviews from "./pages/Host/Reviews.jsx"
 import HostLayout from "./components/HostLayout"
+import HostVans from "./pages/Host/HostVans"
+import HostVanDetails from "./pages/Host/HostVansDetails"
 
 function App() { 
   return (
     <BrowserRouter>
-        <Routes>
-          <Route element={<Layout />}>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/vans" element={<Vans />} />
-            <Route path="/vans/:id" element={<VanDetail />} />
-            <Route/>
-          <Route path="/host" element={<HostLayout />} />
-            <Route path="/host" element={<Dashboard /> } />
-            <Route path="/host/income" element={<Income />} />
-            <Route path="/host/reviews" element={<Reviews />} />
-          <Route/>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="about" element={<About />} />
+          <Route path="vans" element={<Vans />} />
+          <Route path=":id" element={<VanDetail />} />
+          <Route path="host" element={<HostLayout />}>
+            <Route index element={<Dashboard />} />
+            <Route path="income" element={<Income />} />
+            <Route path="vans" element={<HostVans />} />
+            <Route path="vans/:id" element={<HostVanDetails />} />
+            <Route path="reviews" element={<Reviews />} />
           </Route>
-        </Routes>
+        </Route>
+      </Routes>
     </BrowserRouter>
   )
 }
